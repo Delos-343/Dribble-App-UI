@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:dribble_app_ui/util/emoticon_face.dart';
+import 'package:dribble_app_ui/util/exercise_tile.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,9 +18,9 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.blue[800],
       bottomNavigationBar: BottomNavigationBar(
         items: [
+          BottomNavigationBarItem(icon: Icon(Icons.menu), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.arrow_back), label: ''),
         ],
       ),
       body: SafeArea(
@@ -131,6 +132,23 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+
+                      // Ayyo
+                      Column(
+                        children: [
+                          EmoticonFace(
+                            emoticonFace: '🤨',
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            'Ayyo',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+
                       // N/A Okay
                       Column(
                         children: [
@@ -163,22 +181,6 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
 
-                      // Well
-                      Column(
-                        children: [
-                          EmoticonFace(
-                            emoticonFace: '😋',
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Well',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-
                       // Excellent
                       Column(
                         children: [
@@ -205,7 +207,10 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(25.0),
-                color: Colors.grey[100],
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+                ),
                 child: Center(
                   child: Column(
                     children: [
@@ -232,33 +237,38 @@ class _HomePageState extends State<HomePage> {
                       ),
 
                       // Listview of exercises / to-do
-                      Container(
-                        padding: EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        child: Row(
+                      Expanded(
+                        child: ListView(
                           children: [
-                            Icon(Icons.chevron_right_rounded),
-                            Column(
-                              children: [
-                                // Title
-                                Text(
-                                  ' M12 SAPI L4',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue[600],
-                                  ),
-                                ),
-                                // Subtitle
-                                Text(
-                                  '15 KiloMike Hike',
-                                  style: TextStyle(
-                                    color: Colors.grey[500],
-                                  ),
-                                ),
-                              ],
+                            ExerciseTile(
+                              icon: Icons.military_tech,
+                              bgColor: Colors.grey[700],
+                              exerciseName: '12 Kilomike',
+                              numberOfExercises: 'Hiking : 7 km left',
+                            ),
+                            ExerciseTile(
+                              icon: Icons.bike_scooter,
+                              bgColor: Colors.blue,
+                              exerciseName: 'Car-Free Day',
+                              numberOfExercises: 'Biking : 18 km left',
+                            ),
+                            ExerciseTile(
+                              icon: Icons.directions_run,
+                              bgColor: Colors.red,
+                              exerciseName: 'Vine Run',
+                              numberOfExercises: 'Sprint : 120 m left',
+                            ),
+                            ExerciseTile(
+                              icon: Icons.computer,
+                              bgColor: Colors.purple,
+                              exerciseName: 'Dev 101',
+                              numberOfExercises: 'Coding : 2 projects left',
+                            ),
+                            ExerciseTile(
+                              icon: Icons.book,
+                              bgColor: Colors.amber,
+                              exerciseName: 'Novelty',
+                              numberOfExercises: 'Read : 1 book left',
                             ),
                           ],
                         ),
